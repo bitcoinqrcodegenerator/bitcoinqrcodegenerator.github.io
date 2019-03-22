@@ -1,9 +1,267 @@
-<!doctype html>
-<html>
-  <head>
-    <title>This is the title of the webpage!</title>
-  </head>
-  <body>
-    <p>This is an example paragraph. Anything in the <strong>body</strong> tag will appear on the page, just like this <strong>p</strong> tag and its contents.</p>
-  </body>
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Bitcoin QR Code Generator</title>
+
+    <meta name="description"
+          content="Generates multiple QR codes for Bitcoin and Litecoin receiving addresses with optional options for label, amount and message">
+    <meta name="keywords" content="bitcoin, litecoin, qr, generator, tool, github, open-source">
+
+    <meta name=viewport content="width=device-width, initial-scale=1">
+
+    <!-- Meta data for social platforms -->
+
+    <!-- Opengraph for Twitter, Facebook -->
+    <meta property="og:title" content="Bitcoin QR Code Generator"/>
+    <meta property="og:description"
+          content="Generates multiple QR codes for Bitcoin and Litecoin receiving addresses with optional options for label, amount and message"/>
+    <meta property="og:image" content="https://games647.github.io/BitcoinQRCode/favicon.ico"/>
+    <meta property="og:url" content="https://games647.github.io/BitcoinQRCode"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:site_name" content="Bitcoin QR Code Generator"/>
+
+    <!-- Necessary to parse the card correctly -->
+    <meta name="twitter:card" content="summary"/>
+
+    <link rel="shortcut icon" href="favicon.ico">
+
+    <link rel="stylesheet" href="./lib/foundation/foundation.min.css">
+    <link rel="stylesheet" href="./css/font-awesome.min.css">
+    <link rel="stylesheet" href="./css/bitcoinqrcode.css">
+</head>
+
+<body>
+<div class="row">
+    <div class="large-12">
+        <h1>Bitcoin QR Code Generator</h1>
+
+        <p>Right click on the images below to copy it to clipboard or save it to disk.
+            Find out more about
+            <a href="https://bitcoin.org/">Bitcoin</a>
+            or
+            <a href="https://litecoin.org/">Litecoin</a>.
+        </p>
+
+        <form method="post">
+            <div class="row">
+                <div class="large-6 columns">
+                    <label for="address">Bitcoin address:</label>
+
+                    <div class="row collapse">
+                        <div class="small-1 columns">
+                            <span class="prefix">
+                                <i class="fa fa-btc" aria-hidden="true"></i>
+                            </span>
+                        </div>
+                        <div class="small-11 columns">
+                            <input id="address" type="text" placeholder="13Q...."
+                                   title="The address to send the payment to."/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="large-3 columns">
+                    <label for="size">Image size (px):</label>
+                    <div class="row collapse">
+                        <div class="small-2 columns">
+                            <span class="prefix">
+                                <i class="fa fa-arrows" aria-hidden="true"></i>
+                            </span>
+                        </div>
+                        <div class="small-10 columns">
+                            <input id="size" type="number" placeholder="100" value="100" title="Image size"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="large-3 columns">
+                    <label>Currency type:</label>
+
+                    <input class="currency" type="radio" name="type" value="Bitcoin" checked="true">Bitcoin</input>
+                    <input class="currency" type="radio" name="type" value="Litecoin">Litecoin</input>
+                </div>
+            </div>
+
+            <div id="adv" class="slide hidden togglee">
+
+                <div class="row">
+                    <div class="large-10 columns">
+                        <label for="amount">Amount:</label>
+                        <div class="row collapse">
+                            <div class="small-1 large-1 columns">
+                                <span class="prefix">
+                                    <input id="is_amount" type="checkbox"/>
+                                </span>
+                            </div>
+                            <div class="small-6 large-8 columns">
+                                <input id="amount" type="number" placeholder="1" value="0.000001"
+                                       title="An optional amount to request."/>
+                            </div>
+                            <div class="small-4 large-2 columns">
+                                <select id="amount-factor" class="postfix">
+                                    <option value="BTC">BTC / LTC</option>
+                                    <option value="mBTC">mBTC / mLTC</option>
+                                    <option value="μBTC">&#181;BTC / &#181;LTC</option>
+                                    <option value="Satoshi">Sat / Lit</option>
+                                </select>
+                            </div>
+                            <div class="small-1 large-1 columns">
+                                <span class="postfix">
+                                    <i class="fa fa-usd" aria-hidden="true"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="large-10 columns">
+                        <label for="label">Label (identifier/name):</label>
+                        <div class="row collapse">
+                            <div class="small-1 large-1 columns">
+                                <span class="prefix">
+                                    <input id="is_label" type="checkbox"/>
+                                </span>
+                            </div>
+                            <div class="small-10 large-10 columns">
+                                <input id="label" type="text" placeholder="Identifier or name"
+                                       title="A short memorable name for this receiving address."/>
+                            </div>
+                            <div class="small-1 large-1 columns">
+                                <span class="postfix">
+                                    <i class="fa fa-tag" aria-hidden="true"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="large-10 columns">
+                        <label for="msg">Message:</label>
+                        <div class="row collapse">
+                            <div class="small-1 large-1 columns">
+                                <span class="prefix">
+                                    <input id="is_msg" type="checkbox"/>
+                                </span>
+                            </div>
+                            <div class="small-10 large-10 columns">
+                                <input id="msg" type="text" placeholder="Some message"
+                                       title="A message to attach to the payment request, which will be displayed when the request is opened. The message will not be sent over the Bitcoin Network."/>
+                            </div>
+                            <div class="small-1 large-1 columns">
+                                <span class="postfix">
+                                    <i class="fa fa-envelope" aria-hidden="true"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <a class="button toggle-link toggler">
+                <span title="Optional fields">+ show optional fields</span>
+                <span class="hidden">- hide optional fields</span>
+            </a>
+        </form>
+
+        <div id="qrcodes"></div>
+        <div id="qrcode"></div>
+
+        <hr>
+
+        <div>
+            <div class="row collapse">
+                <div class="small-0 medium-1 columns">
+                   <span class="prefix">
+                       <i class="fa fa-qrcode" aria-hidden="true"></i>
+                   </span>
+                </div>
+                <div class="small-12 medium-11 columns">
+                    <input id="camera" type="text" readonly="readonly"/>
+                </div>
+            </div>
+        </div>
+
+        <div class="guide">
+            <h2>How to use it</h2>
+
+            <div class="row">
+                <div class="medium-3 columns">
+                    <h4>1. Enter your address</h4>
+                    <i class="fa fa-btc fa-3x" aria-hidden="true"></i>
+                    <p>
+                        Enter your Bitcoin address and the QR-Codes will be automatically generated.
+                    </p>
+                    <p>
+                        If you want to, you can now set optional properties like image size, setting a specific
+                        amount, label or message. Hover over these properties in order to get a short description.
+                    </p>
+                </div>
+                <div class="medium-3 columns">
+                    <h4>2. Verify</h4>
+                    <i class="fa fa-check fa-3x" aria-hidden="true"></i>
+                    <p>
+                        Verify the generated QR-Code with your scanner like
+                        <a href="https://play.google.com/store/apps/details?id=com.secuso.privacyFriendlyCodeScanner">
+                            this
+                        </a>
+                        or use the internal functionality in your Bitcoin app.
+                    </p>
+                </div>
+                <div class="medium-3 columns">
+                    <h4>3. Save</h4>
+                    <i class="fa fa-floppy-o fa-3x" aria-hidden="true"></i>
+                    <p>
+                        Right click (<b>Desktop</b>) or long press (<b>Mobile</b>) on your favorite QR-Code style to
+                        save it to clipboard or hard disk / sd-card.
+                    </p>
+                </div>
+                <div class="medium-3 columns">
+                    <h4>4. Share</h4>
+                    <i class="fa fa-share-alt-square fa-3x" aria-hidden="true"></i>
+                    <p>
+                        Share your QR-Code around to receive Bitcoin payments. Payers or donators no longer need to
+                        remember or type in the long addresses. Using QR-Scanner apps they can just scan it the QR-Code
+                        and are directly ready to send the transaction.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <div id="share">
+                Share on:
+
+                <a href="https://twitter.com/intent/tweet?text=%23Bitcoin+QR+Code+Generator&amp;url=https%3A%2F%2Fgames647.github.io%2FBitcoinQRCode">
+                    <span class="share_text">Twitter</span>
+                </a>
+
+                <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fgames647.github.io%2FBitcoinQRCode">
+                    <span class="share_text">Facebook</span>
+                </a>
+
+                <a href="https://plus.google.com/share?url=https%3A%2F%2Fgames647.github.io%2FBitcoinQRCode">
+                    <span class="share_text">Google+</span>
+                </a>
+            </div>
+        </footer>
+    </div>
+
+    <a id="fork" href="https://github.com/games647/BitcoinQRCode">
+        <img src="img/fork.png" alt="Fork me on Github">
+    </a>
+</div>
+
+<!-- Javascript libraries -->
+<script src="./lib/jquery/jquery-2.0.3.min.js"></script>
+<script src="./lib/big.min.js"></script>
+<script src="./lib/bitcoin-convert.min.js"></script>
+<script src="./lib/jquery-qrcode/jquery.qrcode.min.js"></script>
+
+<script src="./js/bitcoinqrcode.js"></script>
+</body>
 </html>
